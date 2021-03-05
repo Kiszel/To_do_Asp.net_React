@@ -1,0 +1,117 @@
+{
+  "version": 3,
+  "targets": {
+    ".NETCoreApp,Version=v3.1": {
+      "Business_Logic_Layer/1.0.0": {
+        "type": "project",
+        "framework": ".NETStandard,Version=v2.0",
+        "dependencies": {
+          "Data_Access_Layer": "1.0.0"
+        },
+        "compile": {
+          "bin/placeholder/Business_Logic_Layer.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/Business_Logic_Layer.dll": {}
+        }
+      },
+      "Data_Access_Layer/1.0.0": {
+        "type": "project",
+        "framework": ".NETStandard,Version=v2.0",
+        "compile": {
+          "bin/placeholder/Data_Access_Layer.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/Data_Access_Layer.dll": {}
+        }
+      }
+    }
+  },
+  "libraries": {
+    "Business_Logic_Layer/1.0.0": {
+      "type": "project",
+      "path": "../Business_Logic_Layer/Business_Logic_Layer.csproj",
+      "msbuildProject": "../Business_Logic_Layer/Business_Logic_Layer.csproj"
+    },
+    "Data_Access_Layer/1.0.0": {
+      "type": "project",
+      "path": "../Data_Access_Layer/Data_Access_Layer.csproj",
+      "msbuildProject": "../Data_Access_Layer/Data_Access_Layer.csproj"
+    }
+  },
+  "projectFileDependencyGroups": {
+    ".NETCoreApp,Version=v3.1": [
+      "Business_Logic_Layer >= 1.0.0",
+      "Data_Access_Layer >= 1.0.0"
+    ]
+  },
+  "packageFolders": {
+    "C:\\Users\\User\\.nuget\\packages\\": {},
+    "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder": {}
+  },
+  "project": {
+    "version": "1.0.0",
+    "restore": {
+      "projectUniqueName": "C:\\Users\\User\\Desktop\\To_do_Asp.net_React\\Todo_app\\Todo_app.csproj",
+      "projectName": "Todo_app",
+      "projectPath": "C:\\Users\\User\\Desktop\\To_do_Asp.net_React\\Todo_app\\Todo_app.csproj",
+      "packagesPath": "C:\\Users\\User\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\User\\Desktop\\To_do_Asp.net_React\\Todo_app\\obj\\",
+      "projectStyle": "PackageReference",
+      "fallbackFolders": [
+        "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+      ],
+      "configFilePaths": [
+        "C:\\Users\\User\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+      ],
+      "originalTargetFrameworks": [
+        "netcoreapp3.1"
+      ],
+      "sources": {
+        "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+        "https://api.nuget.org/v3/index.json": {}
+      },
+      "frameworks": {
+        "netcoreapp3.1": {
+          "projectReferences": {
+            "C:\\Users\\User\\Desktop\\To_do_Asp.net_React\\Business_Logic_Layer\\Business_Logic_Layer.csproj": {
+              "projectPath": "C:\\Users\\User\\Desktop\\To_do_Asp.net_React\\Business_Logic_Layer\\Business_Logic_Layer.csproj"
+            },
+            "C:\\Users\\User\\Desktop\\To_do_Asp.net_React\\Data_Access_Layer\\Data_Access_Layer.csproj": {
+              "projectPath": "C:\\Users\\User\\Desktop\\To_do_Asp.net_React\\Data_Access_Layer\\Data_Access_Layer.csproj"
+            }
+          }
+        }
+      },
+      "warningProperties": {
+        "warnAsError": [
+          "NU1605"
+        ]
+      }
+    },
+    "frameworks": {
+      "netcoreapp3.1": {
+        "imports": [
+          "net461",
+          "net462",
+          "net47",
+          "net471",
+          "net472",
+          "net48"
+        ],
+        "assetTargetFallback": true,
+        "warn": true,
+        "frameworkReferences": {
+          "Microsoft.AspNetCore.App": {
+            "privateAssets": "none"
+          },
+          "Microsoft.NETCore.App": {
+            "privateAssets": "all"
+          }
+        },
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.403\\RuntimeIdentifierGraph.json"
+      }
+    }
+  }
+}

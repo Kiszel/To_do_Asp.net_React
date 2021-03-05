@@ -1,0 +1,11 @@
+{
+  "version": 2,
+  "dgSpecHash": "D2RmuVA//NVmIozh/kS7biE5VXFwe4bFcZHUCSwf+jFgm4KGd4h0u6kvgG9DJ5gtSnywQ9irSicSBSr6DiA1Lg==",
+  "success": true,
+  "projectFilePath": "C:\\Users\\User\\Desktop\\To_do_Asp.net_React\\Data_Access_Layer\\Data_Access_Layer.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\User\\.nuget\\packages\\microsoft.netcore.platforms\\1.1.0\\microsoft.netcore.platforms.1.1.0.nupkg.sha512",
+    "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder\\netstandard.library\\2.0.3\\netstandard.library.2.0.3.nupkg.sha512"
+  ],
+  "logs": []
+}
