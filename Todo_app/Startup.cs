@@ -7,6 +7,8 @@ using Data_Access_Layer;
 using Microsoft.Extensions.Configuration;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore.Design;
+using Data_Access_Layer.Repositories;
+
 namespace Todo_app
 {
     public class Startup
@@ -34,6 +36,7 @@ namespace Todo_app
                     policy.AllowAnyMethod().WithOrigins("http://localhost:3000");
                 });
             });
+            services.AddScoped<ITodoRepository, SqlTodoRepository>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
