@@ -15,63 +15,73 @@ namespace Data_Access_Layer
 
                     new Todo
                     {
-                        Title = "Past Activity 1",
+                        Title = "Past Todo 1",
                         Date = DateTime.Now.AddMonths(-2),
-                        Description = "Activity 2 months ago",
+                        Description = "Todo 2 months ago",
+                        Priority=Enum.Priority.low
                     },
                     new Todo
                     {
                         Title = "Past Activity 2",
                         Date = DateTime.Now.AddMonths(-1),
                         Description = "Activity 1 month ago",
+                         Priority=Enum.Priority.low
                     },
                     new Todo
                     {
-                        Title = "Future Activity 1",
+                        Title = "Future Todo 1",
                         Date = DateTime.Now.AddMonths(1),
-                        Description = "Activity 1 month in future",
+                        Description = "Todo 1 month in future",
+                         Priority=Enum.Priority.low
                     },
                     new Todo
                     {
-                        Title = "Future Activity 2",
+                        Title = "Future Todo 2",
                         Date = DateTime.Now.AddMonths(2),
-                        Description = "Activity 2 months in future",
+                        Description = "Todo 2 months in future",
+                         Priority=Enum.Priority.low
                     },
                     new Todo
                     {
-                        Title = "Future Activity 3",
+                        Title = "Future Todo 3",
                         Date = DateTime.Now.AddMonths(3),
-                        Description = "Activity 3 months in future",
+                        Description = "Todo 3 months in future",
+                         Priority=Enum.Priority.normal
                     },
                     new Todo
                     {
-                        Title = "Future Activity 4",
+                        Title = "Future Todo 4",
                         Date = DateTime.Now.AddMonths(4),
-                        Description = "Activity 4 months in future",
+                        Description = "Todo 4 months in future",
+                         Priority=Enum.Priority.normal
                     },
                     new Todo
                     {
-                        Title = "Future Activity 5",
+                        Title = "Future Todo 5",
                         Date = DateTime.Now.AddMonths(5),
-                        Description = "Activity 5 months in future",
+                        Description = "Todo 5 months in future",
+                         Priority=Enum.Priority.normal
                     },
                     new Todo
                     {
-                        Title = "Future Activity 6",
+                        Title = "Future Todo 6",
                         Date = DateTime.Now.AddMonths(6),
-                        Description = "Activity 6 months in future",
+                        Description = "Todo 6 months in future",
+                         Priority=Enum.Priority.normal
                     },
                     new Todo
                     {
-                        Title = "Future Activity 7",
+                        Title = "Future Todo 7",
                         Date = DateTime.Now.AddMonths(7),
-                        Description = "Activity 2 months ago",
+                        Description = "Todo 2 months ago",
+                         Priority=Enum.Priority.high
                     },
                     new Todo
                     {
-                        Title = "Future Activity 8",
+                        Title = "Future Todo 8",
                         Date = DateTime.Now.AddMonths(8),
-                        Description = "Activity 8 months in future",
+                        Description = "Todo 8 months in future",
+                        Priority=Enum.Priority.high
                     }
                 };
                 context.Todos.AddRange(todos);
