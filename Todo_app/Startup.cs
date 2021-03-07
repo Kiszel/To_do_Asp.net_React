@@ -5,9 +5,9 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Data_Access_Layer;
 using Microsoft.Extensions.Configuration;
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore.Design;
 using Data_Access_Layer.Repositories;
+using MediatR;
+using Business_Logic_Layer.Handlers;
 
 namespace Todo_app
 {
@@ -36,7 +36,10 @@ namespace Todo_app
                     policy.AllowAnyMethod().WithOrigins("http://localhost:3000");
                 });
             });
-            services.AddScoped<ITodoRepository, SqlTodoRepository>();
+            services.AddScoped<ITodoRepository, TodoRepository>();
+            services.AddMediatR(typeof(GetAllTodosHandler).Assembly);
+
+            services.AddControllers();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -47,16 +50,14 @@ namespace Todo_app
                // app.UseDeveloperExceptionPage();
             }
 
-            app.UseRouting();
             app.UseCors("CorsPolicy");
             //app.UseMvc();
-            //app.UseEndpoints(endpoints =>
-            //{
-            //    endpoints.MapGet("/", async context =>
-            //    {
-            //        await context.Response.WriteAsync("Hello World!");
-            //    });
-            //});
+            app.UseRouting();
+
+            app.UseEndpoints(endpoints =>
+            {
+                endpoints.MapControllers();
+            });
         }
     }
 }
