@@ -6,7 +6,7 @@ using System.Text;
 
 namespace Business_Logic_Layer.Queries
 {
-    public class GetTodoQuery : IRequest<Todo>
+    public class GetBoardQuery : IRequest<Board>
     {
             public int Id { get; set; }
     }

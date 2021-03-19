@@ -11,6 +11,7 @@ namespace Data_Access_Layer
 
         }
         public DbSet<Todo> Todos { get; set; }
+        public DbSet<Board> Boards { get; set; }
 
     }
 }

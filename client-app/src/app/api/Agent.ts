@@ -1,14 +1,17 @@
 import { ITodo } from "./../models/ITodo";
+import { IBoard } from "./../models/IBoard";
 import { history } from "../../index";
 import axios, { AxiosResponse } from "axios";
 import { toast } from "react-toastify";
 
-axios.defaults.baseURL = "http://localhost:5001/api";
+axios.defaults.baseURL = "http://localhost:5000/api";
 axios.interceptors.response.use(undefined, (error) => {
+  console.log(error);
   if (error.message === "Network Error" && !error.response) {
     toast.error("Network Error - make sure API is running!");
   }
-  const { data, config } = error.response;
+  const { data, config } = error?.response;
+  console.log(error);
   if (error.response.status === 404) {
     history.push("/notfound");
   }
@@ -40,15 +43,19 @@ const sleep = (ms: number) => (response: AxiosResponse) =>
     setTimeout(() => resolve(response), ms)
   );
 
-const Todos = {
+export const Todos = {
   list: (): Promise<ITodo[]> => request.get("/todo"),
   details: (id: string) => request.get(`/todo/${id}`),
-  create: (activity: ITodo) => request.post("/todo", activity),
-  update: (activity: ITodo) =>
-    request.put(`/todo/${activity.id}/`, activity),
+  create: (todo: ITodo) => request.post("/todo", todo),
+  update: (todo: ITodo) => request.put(`/todo/${todo.id}/`, todo),
   delete: (id: string) => request.del(`/todo/${id}`),
 };
 
-export default {
-  Todos,
+export const Boards = {
+  list: (): Promise<IBoard[]> => request.get("/board"),
+  details: (id: number) => request.get(`/board/${id}`),
+  create: (board: IBoard) => request.post("/board", board),
+  update: (board: IBoard) => request.put(`/board/${board.id}/`, board),
+  delete: (id: number) => request.del(`/board/${id}`),
 };
+

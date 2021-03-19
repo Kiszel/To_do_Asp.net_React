@@ -1,7 +1,8 @@
 import { Priority } from "./Priorty";
 
 export interface ITodo {
-    id: string;
+    id: number;
+    Board_Id: number;
     title: string;
     description: string;
     date: Date;

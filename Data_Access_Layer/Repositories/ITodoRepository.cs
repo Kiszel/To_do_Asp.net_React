@@ -8,11 +8,11 @@ namespace Data_Access_Layer.Repositories
 {
     public interface ITodoRepository
     {
-        Task<Todo> GetTodoAsync(Guid id);
+        Task<Todo> GetTodoAsync(int id);
         Task<IEnumerable<Todo>> GetAllTodoAsync();
         Task<Todo> AddTodoAsync(Todo todo);
         Task<Todo> UpdateAsync(Todo todoChanges);
-        Task<Todo> DeleteAsync(Guid id);
+        Task<Todo> DeleteAsync(int id);
 
     }
 }

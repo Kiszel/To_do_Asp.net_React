@@ -37,6 +37,7 @@ namespace Todo_app
                 });
             });
             services.AddScoped<ITodoRepository, TodoRepository>();
+            services.AddScoped<IBoardRepository, BoardRepository>();
             services.AddMediatR(typeof(GetAllTodosHandler).Assembly);
 
             services.AddControllers();

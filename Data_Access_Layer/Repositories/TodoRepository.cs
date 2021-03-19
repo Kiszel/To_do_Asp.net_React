@@ -21,7 +21,7 @@ namespace Data_Access_Layer.Repositories
             return todo;
         }
 
-        public async Task<Todo> DeleteAsync(Guid id)
+        public async Task<Todo> DeleteAsync(int id)
         {
             var todo = await _dataContext.Todos.FindAsync(id);
             if (todo != null)
@@ -38,7 +38,7 @@ namespace Data_Access_Layer.Repositories
             return todos;
         }
 
-        public async Task<Todo> GetTodoAsync(Guid id)
+        public async Task<Todo> GetTodoAsync(int id)
         {
             var todo = await _dataContext.Todos.FindAsync(id);
             return todo;

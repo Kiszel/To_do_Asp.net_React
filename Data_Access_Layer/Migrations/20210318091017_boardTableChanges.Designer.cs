@@ -9,8 +9,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Data_Access_Layer.Migrations
 {
     [DbContext(typeof(DataContext))]
-    [Migration("20210306101841_AddPriority2")]
-    partial class AddPriority2
+    [Migration("20210318091017_boardTableChanges")]
+    partial class boardTableChanges
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -18,11 +18,28 @@ namespace Data_Access_Layer.Migrations
             modelBuilder
                 .HasAnnotation("ProductVersion", "3.1.1");
 
+            modelBuilder.Entity("Data_Access_Layer.Entities.Board", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("INTEGER");
+
+                    b.Property<string>("Title")
+                        .HasColumnType("TEXT");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Boards");
+                });
+
             modelBuilder.Entity("Data_Access_Layer.Entities.Todo", b =>
                 {
-                    b.Property<Guid>("Id")
+                    b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("TEXT");
+                        .HasColumnType("INTEGER");
+
+                    b.Property<int?>("BoardId")
+                        .HasColumnType("INTEGER");
 
                     b.Property<DateTime>("Date")
                         .HasColumnType("TEXT");
@@ -38,7 +55,16 @@ namespace Data_Access_Layer.Migrations
 
                     b.HasKey("Id");
 
+                    b.HasIndex("BoardId");
+
                     b.ToTable("Todos");
+                });
+
+            modelBuilder.Entity("Data_Access_Layer.Entities.Todo", b =>
+                {
+                    b.HasOne("Data_Access_Layer.Entities.Board", "Board")
+                        .WithMany("Todos")
+                        .HasForeignKey("BoardId");
                 });
 #pragma warning restore 612, 618
         }

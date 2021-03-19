@@ -1,26 +1,35 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import { Container } from "semantic-ui-react";
+import BoardsDashboard from "../../features/boards/BoardsDashboard";
+import { observer } from "mobx-react-lite";
+import {
+  Route,
+  withRouter,
+  RouteComponentProps,
+  Switch,
+} from "react-router-dom";
+import { HomePage } from "../../features/home/HomePage";
+import { ToastContainer } from "react-toastify";
 
-function App() {
+const App: React.FC<RouteComponentProps> = ({ location }) => {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      <ToastContainer position={"bottom-right"} />
+      <Route exact path="/" component={HomePage} />
+      <Route
+        path={"/(.+)"}
+        render={() => (
+          <>
+            <Container style={{ marginTop: "7em" }}>
+              <Switch>
+                <Route exact path="/boards" component={BoardsDashboard} />
+              </Switch>
+            </Container>
+          </>
+        )}
+      />
+    </>
   );
-}
+};
 
-export default App;
+export default withRouter(observer(App));

@@ -11,41 +11,41 @@ namespace Todo_app.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class TodoController : ControllerBase
+    public class BoardController : ControllerBase
     {
         private readonly IMediator _mediator;
-        public TodoController(IMediator mediator)
+        public BoardController(IMediator mediator)
         {
             _mediator = mediator;
         }
         [HttpGet]
-        public async Task<ActionResult<List<Todo>>> GetAllTodosAsync()
+        public async Task<ActionResult<List<Todo>>> GetAllBoardsAsync()
         {
-            var query = new GetAllTodosQuery();
+            var query = new GetAllBoardsQuery();
             var result = await _mediator.Send(query);
             return Ok(result);
         }
         [HttpGet("{id}")]
-        public async Task<ActionResult<List<Todo>>> GetTodoAsync(int id)
+        public async Task<ActionResult<List<Todo>>> GetBoardAsync(int id)
         {
-            var query = new GetTodoQuery() { Id = id };
+            var query = new GetBoardQuery() { Id = id };
             var result = await _mediator.Send(query);
             return Ok(result);
         }
 
         [HttpPost]
-        public async Task<ActionResult<Unit>> Create(CreateTodoCommand command)
+        public async Task<ActionResult<Unit>> Create(CreateBoardCommand command)
         {
             return await _mediator.Send(command);
         }
         [HttpDelete("{id}")]
         public async Task<ActionResult<Unit>> Delete(int id)
         {
-            var command = new DeleteoTodoCommand() { Id = id };
+            var command = new DeleteBoardCommand() { Id = id };
             return await _mediator.Send(command);
         }
         [HttpPut("{id}")]
-        public async Task<ActionResult<Unit>> Edit(int id, UpdateTodoCommand command)
+        public async Task<ActionResult<Unit>> Edit(int id, UpdateBoardCommand command)
         {
             command.Id = id;
             return await _mediator.Send(command);
