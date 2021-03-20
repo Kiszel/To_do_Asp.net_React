@@ -22,7 +22,7 @@ namespace Business_Logic_Layer.Handlers
                 Title = request.Title,
                 Todos=request.Todos,
             };
-            await _boardRepository.UpdateAsync(board);
+            await _boardRepository.UpdateEntityAsync(board);
             return Unit.Value;
         }
     }

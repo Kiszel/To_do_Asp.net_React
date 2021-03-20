@@ -21,7 +21,7 @@ namespace Business_Logic_Layer.Handlers
             Id=0,
             Title = request.Title,
         };
-            await _boardRepository.AddBoardAsync(board);
+            await _boardRepository.AddEntityAsync(board);
             return Unit.Value;
         }
     }

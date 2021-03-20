@@ -20,7 +20,7 @@ namespace Business_Logic_Layer.Handlers
         }
         public async Task<List<Board>> Handle(GetAllBoardsQuery request, CancellationToken cancellationToken)
         {
-            var boards = await _boardRepository.GetAllBoardAsync();
+            var boards = await _boardRepository.GetAllEntityAsync();
             return boards.ToList();
         }
     }

@@ -18,7 +18,7 @@ namespace Business_Logic_Layer.Handlers
         }
         public async Task<Unit> Handle(DeleteoTodoCommand request, CancellationToken cancellation)
         {
-            await _todoRepository.DeleteAsync(request.Id);
+            await _todoRepository.DeleteEntityAsync(request.Id);
             return Unit.Value;
         }
     }

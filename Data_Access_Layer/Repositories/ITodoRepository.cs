@@ -6,13 +6,7 @@ using System.Threading.Tasks;
 
 namespace Data_Access_Layer.Repositories
 {
-    public interface ITodoRepository
+    public interface ITodoRepository : IRepository<Todo>
     {
-        Task<Todo> GetTodoAsync(int id);
-        Task<IEnumerable<Todo>> GetAllTodoAsync();
-        Task<Todo> AddTodoAsync(Todo todo);
-        Task<Todo> UpdateAsync(Todo todoChanges);
-        Task<Todo> DeleteAsync(int id);
-
     }
 }

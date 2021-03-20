@@ -20,7 +20,7 @@ namespace Business_Logic_Layer.Handlers
         }
         public async Task<List<Todo>> Handle(GetAllTodosQuery request, CancellationToken cancellationToken)
         {
-            var todos = await _todoRepository.GetAllTodoAsync();
+            var todos = await _todoRepository.GetAllEntityAsync();
             return todos.ToList();
         }
     }

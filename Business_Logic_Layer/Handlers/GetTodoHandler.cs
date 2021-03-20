@@ -16,7 +16,7 @@ namespace Business_Logic_Layer.Handlers
         }
         public async Task<Todo> Handle(GetTodoQuery request, CancellationToken cancellationToken)
         {
-            var todo = await _todoRepository.GetTodoAsync(request.Id);
+            var todo = await _todoRepository.GetEntityAsync(request.Id);
             return todo;
         }
     }

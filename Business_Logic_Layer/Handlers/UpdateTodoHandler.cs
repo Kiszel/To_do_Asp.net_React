@@ -27,7 +27,7 @@ namespace Business_Logic_Layer.Handlers
 
 
 
-            await _todoRepository.UpdateAsync(todo);
+            await _todoRepository.UpdateEntityAsync(todo);
             return Unit.Value;
         }
     }

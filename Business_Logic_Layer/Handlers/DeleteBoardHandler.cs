@@ -18,7 +18,7 @@ namespace Business_Logic_Layer.Handlers
         }
         public async Task<Unit> Handle(DeleteBoardCommand request, CancellationToken cancellation)
         {
-            await _boardRepository.DeleteAsync(request.Id);
+            await _boardRepository.DeleteEntityAsync(request.Id);
             return Unit.Value;
         }
     }

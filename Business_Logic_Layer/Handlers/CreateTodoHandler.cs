@@ -23,7 +23,7 @@ namespace Business_Logic_Layer.Handlers
             Priority = request.Priority,
             Date = request.Date,
         };
-            await _todoRepository.AddTodoAsync(todo);
+            await _todoRepository.AddEntityAsync(todo);
             return Unit.Value;
         }
     }

@@ -16,7 +16,7 @@ namespace Business_Logic_Layer.Handlers
         }
         public async Task<Board> Handle(GetBoardQuery request, CancellationToken cancellationToken)
         {
-            var board = await _boardRepository.GetBoardAsync(request.Id);
+            var board = await _boardRepository.GetEntityAsync(request.Id);
             return board;
         }
     }
