@@ -8,6 +8,6 @@ namespace Data_Access_Layer.Entities
     {
         public int Id { get; set; }
         public string Title { get; set; }
-        public virtual List<Todo> Todos { get; set; }
+        public List<Todo> Todos { get; set; }
     }
 }

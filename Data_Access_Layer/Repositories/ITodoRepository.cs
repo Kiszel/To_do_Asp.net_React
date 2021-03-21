@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Data_Access_Layer.Repositories
 {
-    public interface ITodoRepository : IRepository<Todo>
+    public interface ITodoRepository : IBaseRepository<Todo>
     {
     }
 }

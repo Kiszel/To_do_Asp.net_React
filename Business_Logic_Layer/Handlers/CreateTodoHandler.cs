@@ -10,20 +10,23 @@ namespace Business_Logic_Layer.Handlers
     public class CreateTodoHandler : IRequestHandler<CreateTodoCommand>
     {
         private readonly ITodoRepository _todoRepository;
-        public CreateTodoHandler(ITodoRepository todoRepository)
+        private readonly IBoardRepository _boardRepository;
+        public CreateTodoHandler(ITodoRepository todoRepository, IBoardRepository boardRepository)
         {
             _todoRepository = todoRepository;
+            _boardRepository = boardRepository;
         }
         public async Task<Unit> Handle(CreateTodoCommand request, CancellationToken cancellationToken)
-    {
-        var todo = new Todo
         {
-            Title = request.Title,
-            Description = request.Description,
-            Priority = request.Priority,
-            Date = request.Date,
-        };
-            await _todoRepository.AddEntityAsync(todo);
+            var todo = new Todo
+            {
+                Title = request.Title,
+                Description = request.Description,
+                Priority = request.Priority,
+                Date = request.Date,
+            };
+            var entityTodo = await _todoRepository.AddEntityAsync(todo);
+            await _boardRepository.AddTodoToBoard(entityTodo);
             return Unit.Value;
         }
     }

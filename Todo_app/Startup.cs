@@ -8,6 +8,7 @@ using Microsoft.Extensions.Configuration;
 using Data_Access_Layer.Repositories;
 using MediatR;
 using Business_Logic_Layer.Handlers;
+using Business_Logic_Layer.Services;
 
 namespace Todo_app
 {
@@ -38,6 +39,7 @@ namespace Todo_app
             });
             services.AddScoped<ITodoRepository, TodoRepository>();
             services.AddScoped<IBoardRepository, BoardRepository>();
+
             services.AddMediatR(typeof(GetAllTodosHandler).Assembly);
 
             services.AddControllers();

@@ -6,7 +6,7 @@ import { observer } from "mobx-react";
 import { action } from "mobx";
 import { LoadingComponent } from "../../app/layout/LoadingComponent";
 import { BoardsDashboardView } from "./BoardsDashboardView";
-import { ITodo } from "../../app/models/ITodo";
+import { ITodo } from "../../app/models/Todo";
 
 @observer
 class BoardsDashboard extends React.Component {
@@ -19,7 +19,6 @@ class BoardsDashboard extends React.Component {
   }
   private onDragEnd = (result: DropResult) => {
     const { destination, source, draggableId } = result;
-    console.log(result, "result");
     if (!destination) {
       return;
     }
@@ -44,18 +43,21 @@ class BoardsDashboard extends React.Component {
     if (todo === undefined) {
       return;
     }
-    console.log(todo);
     if (home === foreign) {
       const todos = Array.from(home.todos);
       todos.splice(source.index, 1);
       todos.splice(destination.index, 0, todo);
-      console.log(todo);
       const newHome: IBoard = {
         ...home,
         todos: todos,
       };
-      console.log(newHome);
-
+      const tempBoards = this.context.boards.map((board: IBoard) => {
+         if (board.id === newHome.id) {
+          return newHome;
+        }
+        return board;
+      });
+      this.context.setBoards(tempBoards);
       this.context.editBoard(newHome);
       return;
     }
@@ -83,16 +85,13 @@ class BoardsDashboard extends React.Component {
       }
       return board;
     });
-    console.log(tempBoards, "tempBoards");
     this.context.setBoards(tempBoards);
-    this.context.editBoard(newHome);
-    this.context.editBoard(newForeign);
+    this.context.editBoards(tempBoards);
   };
 
   public render() {
     if (this.context.loadingInitial)
       return <LoadingComponent content="Loading todos" />;
-    console.log("asd");
     return (
       <DragDropContext onDragEnd={this.onDragEnd}>
         <BoardsDashboardView boards={this.context.boards} />

@@ -1,4 +1,4 @@
-import { ITodo } from "./../../models/ITodo";
+import { ITodo } from "../../models/Todo";
 import { observable, action, configure, runInAction, makeObservable } from "mobx";
 import React, { createContext } from "react";
 import {Todos} from "../Agent";
@@ -21,7 +21,7 @@ class TodoStore {
   loadTodo = async (id: string) => {
       this.loadingInitial = true;
       try {
-      const todo = await Todos.details(id);
+      const todo = await Todos.details(parseInt(id));
         runInAction(() => {
           todo.date = new Date(todo.date);
           this.todo = todo;
@@ -49,7 +49,7 @@ class TodoStore {
       runInAction(() => {
         this.submitting = false;
       });
-      history.push(`/todo/${todo.id}`);
+      history.push(`/boards`);
     } catch (error) {
       runInAction(() => {
         this.submitting = false;
@@ -67,7 +67,7 @@ class TodoStore {
         this.todo = todo;
         this.submitting = false;
       });
-      history.push(`/todo/${todo.id}`);
+      history.push(`/boards`);
     } catch (error) {
       runInAction(() => {
         this.submitting = false;
@@ -78,11 +78,9 @@ class TodoStore {
   };
   @action.bound
   deleteTodo = async (
-    event: React.SyntheticEvent<HTMLButtonElement>,
-    id: string
+    id: number
   ) => {
     this.submitting = true;
-    this.target = event.currentTarget.name;
     try {
       await Todos.delete(id);
       runInAction(() => {

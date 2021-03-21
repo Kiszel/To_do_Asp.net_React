@@ -8,17 +8,18 @@ using System.Linq.Expressions;
 
 namespace Data_Access_Layer.Repositories
 {
-    public class Repository<TEntity> : IRepository<TEntity> where TEntity : class
+    public abstract class BaseRepository<TEntity> : IBaseRepository<TEntity> where TEntity : class
     {
         private readonly DataContext _dataContext;
-        public Repository(DataContext dataContext)
+        public BaseRepository(DataContext dataContext)
         {
             _dataContext = dataContext;
         }
-        public async Task AddEntityAsync(TEntity entity)
+        public async Task<TEntity> AddEntityAsync(TEntity entity)
         {
-           _dataContext.Set<TEntity>().Add(entity);
+            _dataContext.Set<TEntity>().Add(entity);
             await _dataContext.SaveChangesAsync();
+            return entity;
         }
 
         public async Task DeleteEntityAsync(int id)

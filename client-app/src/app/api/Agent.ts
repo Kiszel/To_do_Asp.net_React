@@ -1,10 +1,11 @@
-import { ITodo } from "./../models/ITodo";
-import { IBoard } from "./../models/IBoard";
+import { ITodo } from "../models/Todo";
+import { IBoard } from "../models/IBoard";
 import { history } from "../../index";
 import axios, { AxiosResponse } from "axios";
 import { toast } from "react-toastify";
 
 axios.defaults.baseURL = "http://localhost:5000/api";
+axios.defaults.headers = { "Access-Control-Allow-Origin": "*" };
 axios.interceptors.response.use(undefined, (error) => {
   console.log(error);
   if (error.message === "Network Error" && !error.response) {
@@ -45,10 +46,10 @@ const sleep = (ms: number) => (response: AxiosResponse) =>
 
 export const Todos = {
   list: (): Promise<ITodo[]> => request.get("/todo"),
-  details: (id: string) => request.get(`/todo/${id}`),
+  details: (id: number) => request.get(`/todo/${id}`),
   create: (todo: ITodo) => request.post("/todo", todo),
   update: (todo: ITodo) => request.put(`/todo/${todo.id}/`, todo),
-  delete: (id: string) => request.del(`/todo/${id}`),
+  delete: (id: number) => request.del(`/todo/${id}`),
 };
 
 export const Boards = {
@@ -57,5 +58,5 @@ export const Boards = {
   create: (board: IBoard) => request.post("/board", board),
   update: (board: IBoard) => request.put(`/board/${board.id}/`, board),
   delete: (id: number) => request.del(`/board/${id}`),
+  updateBoards: (boards: IBoard[]) => request.put(`/board/EditBoards`, boards),
 };
-

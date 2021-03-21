@@ -6,7 +6,8 @@ using System.Threading.Tasks;
 
 namespace Data_Access_Layer.Repositories
 {
-    public interface IBoardRepository : IRepository<Board>
+    public interface IBoardRepository : IBaseRepository<Board>
     {
+        Task AddTodoToBoard(Todo todo);
     }
 }

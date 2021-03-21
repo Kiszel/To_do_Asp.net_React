@@ -103,7 +103,7 @@ namespace Data_Access_Layer
 
                     new Board
                     {
-                       Todos=todos,
+                        Todos=todos,
                         Id=1,
                         Title = "Todo",
                     },

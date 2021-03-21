@@ -1,4 +1,4 @@
-import { IBoard } from "./../../models/IBoard";
+import { IBoard } from "../../models/IBoard";
 import {
   observable,
   action,
@@ -6,10 +6,11 @@ import {
   runInAction,
   makeObservable,
 } from "mobx";
-import  { createContext } from "react";
+import { createContext } from "react";
 import { Boards } from "../Agent";
 import { history } from "./../../../index";
 import { toast } from "react-toastify";
+import { ITodo } from "../../models/Todo";
 
 configure({ enforceActions: "always" });
 
@@ -17,7 +18,6 @@ class BoardStore {
   @observable boardRegistry: Map<number, IBoard> = new Map();
   @observable.ref loadingInitial: boolean = false;
   @observable.ref submitting: boolean = false;
-  @observable.ref target: number | string | null = "";
   @observable.ref boards: IBoard[] = [];
   constructor() {
     makeObservable(this);
@@ -48,7 +48,6 @@ class BoardStore {
   };
   @action.bound
   setBoards = (boards: IBoard[]) => {
-    console.log(this.boards, "boards");
     this.boards = boards;
   };
 
@@ -86,6 +85,37 @@ class BoardStore {
       toast.error("Problem submitting data");
       console.log(error.response);
     }
+  };
+  @action.bound
+  editBoards = async (boards: IBoard[]) => {
+    this.submitting = true;
+    try {
+      await Boards.updateBoards(boards);
+      runInAction(() => {
+        boards.forEach((b) => this.boardRegistry.set(b.id, b));
+        this.submitting = false;
+      });
+    } catch (error) {
+      runInAction(() => {
+        this.submitting = false;
+      });
+      toast.error("Problem submitting data");
+      console.log(error.response);
+    }
+  };
+
+  @action.bound
+  deleteTodoFromBoard = (id: number) => {
+    const boards: IBoard[] = [];
+    this.boards.forEach((b) => {
+      const todos = b.todos.filter((t) => t.id !== id);
+      const newBoard: IBoard = {
+        ...b,
+        todos: todos,
+      };
+      boards.push(newBoard);
+    });
+    this.setBoards(boards);
   };
 }
 export default createContext(new BoardStore());

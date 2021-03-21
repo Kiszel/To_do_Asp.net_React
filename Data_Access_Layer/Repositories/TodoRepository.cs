@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Data_Access_Layer.Repositories
 {
-    public class TodoRepository : Repository<Todo>, ITodoRepository
+    public class TodoRepository : BaseRepository<Todo>, ITodoRepository
     {
         public TodoRepository(DataContext dataContext)
             :base(dataContext)

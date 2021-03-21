@@ -13,7 +13,6 @@ const Container = styled.div`
 
 
 export const BoardsDashboardView: React.FC<IBoardsDashboardView> = ({ boards }) => {
-  console.log(boards);
   return (
     <Container>
       {boards.map((board: IBoard, index: number) => {

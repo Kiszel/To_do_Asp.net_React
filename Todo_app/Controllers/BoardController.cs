@@ -6,6 +6,7 @@ using MediatR;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using Business_Logic_Layer.Commands;
+using Business_Logic_Layer.Services;
 
 namespace Todo_app.Controllers
 {
@@ -48,6 +49,17 @@ namespace Todo_app.Controllers
         public async Task<ActionResult<Unit>> Edit(int id, UpdateBoardCommand command)
         {
             command.Id = id;
+            var result = await _mediator.Send(command);
+            return Ok(result);
+        }
+        [HttpPut]
+        [Route("[action]")]
+        public async Task<ActionResult<Unit>> EditBoards([FromBody]List<Board> boards)
+        {
+            var command = new UpdateBoardsCommand()
+            {
+                boards = boards
+            };
             return await _mediator.Send(command);
         }
     }
