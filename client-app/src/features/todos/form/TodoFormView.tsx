@@ -6,7 +6,7 @@ import { SelectInput } from "../../../app/common/Form/SelectInput";
 import { priority } from "../../../app/common/options/PriorityOptions";
 import { DateInput } from "../../../app/common/Form/DateInput";
 import { Segment, Form, Button, Grid } from "semantic-ui-react";
-import { ITodo, ITodoFormValues } from "../../../app/models/Todo";
+import { ITodoFormValues } from "../../../app/models/Todo";
 
 interface ITodoFormView {
   todo: ITodoFormValues;

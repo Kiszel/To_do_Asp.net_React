@@ -7,8 +7,7 @@ using Data_Access_Layer;
 using Microsoft.Extensions.Configuration;
 using Data_Access_Layer.Repositories;
 using MediatR;
-using Business_Logic_Layer.Handlers;
-using Business_Logic_Layer.Services;
+using Business_Logic_Layer.Handlers.TodoHandler;
 
 namespace Todo_app
 {

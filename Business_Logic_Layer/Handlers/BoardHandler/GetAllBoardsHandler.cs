@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 using System.Linq;
 using Data_Access_Layer.Entities;
 
-namespace Business_Logic_Layer.Handlers
+namespace Business_Logic_Layer.Handlers.BoardHandler
 {
     public class GetAllBoardsHandler : IRequestHandler<GetAllBoardsQuery, List<Board>>
     {

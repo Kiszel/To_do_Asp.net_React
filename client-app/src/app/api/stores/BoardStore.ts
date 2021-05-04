@@ -10,7 +10,6 @@ import { createContext } from "react";
 import { Boards } from "../Agent";
 import { history } from "./../../../index";
 import { toast } from "react-toastify";
-import { ITodo } from "../../models/Todo";
 
 configure({ enforceActions: "always" });
 
@@ -58,6 +57,7 @@ class BoardStore {
       await Boards.create(board);
       runInAction(() => {
         this.boardRegistry.set(board.id, board);
+        this.setBoards(Array.from(this.boardRegistry.values()))
         this.submitting = false;
       });
       history.push(`/board/${board.id}`);
@@ -76,6 +76,7 @@ class BoardStore {
       await Boards.update(board);
       runInAction(() => {
         this.boardRegistry.set(board.id, board);
+        this.setBoards(Array.from(this.boardRegistry.values()))
         this.submitting = false;
       });
     } catch (error) {
@@ -93,6 +94,7 @@ class BoardStore {
       await Boards.updateBoards(boards);
       runInAction(() => {
         boards.forEach((b) => this.boardRegistry.set(b.id, b));
+        this.setBoards(Array.from(this.boardRegistry.values()))
         this.submitting = false;
       });
     } catch (error) {

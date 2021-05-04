@@ -6,7 +6,7 @@ using System.Collections.Generic;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace Business_Logic_Layer.Handlers
+namespace Business_Logic_Layer.Handlers.BoardHandler
 {
     public class UpdateBoardsHandler : IRequestHandler<UpdateBoardsCommand>
     {

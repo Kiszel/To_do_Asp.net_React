@@ -5,7 +5,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using Data_Access_Layer.Entities;
 
-namespace Business_Logic_Layer.Handlers
+namespace Business_Logic_Layer.Handlers.BoardHandler
 {
     public class GetBoardHandler : IRequestHandler<GetBoardQuery,Board>
     {

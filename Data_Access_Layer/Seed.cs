@@ -116,6 +116,11 @@ namespace Data_Access_Layer
                     {
                         Id=3,
                         Title = "Complete",
+                    },
+                    new Board
+                    {
+                        Id=4,
+                        Title = "Delayed",
                     }
                 };
 

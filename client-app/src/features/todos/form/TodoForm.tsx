@@ -3,7 +3,6 @@ import React, { useState, useContext, useEffect } from "react";
 import {
   TodoFormValues
 } from "../../../app/models/Todo";
-import { v4 as uuid } from "uuid";
 import { observer } from "mobx-react-lite";
 import TodoStore from "../../../app/api/stores/TodoStore";
 import { RouteComponentProps } from "react-router-dom";

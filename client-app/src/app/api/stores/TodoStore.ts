@@ -1,11 +1,9 @@
 import { ITodo } from "../../models/Todo";
-import { observable, action, configure, runInAction, makeObservable } from "mobx";
-import React, { createContext } from "react";
+import { observable, action, runInAction, makeObservable } from "mobx";
+import { createContext } from "react";
 import {Todos} from "../Agent";
 import { history } from "./../../../index";
 import { toast } from "react-toastify";
-
-configure({ enforceActions: "always" });
 
 class TodoStore {
   @observable.ref todo: ITodo | null = null;
@@ -35,10 +33,6 @@ class TodoStore {
         });
         throw error;
       }
-  };
-
-  @action clearTodo = () => {
-    this.todo = null;
   };
 
   @action.bound

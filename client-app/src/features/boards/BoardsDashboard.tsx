@@ -51,13 +51,13 @@ class BoardsDashboard extends React.Component {
         ...home,
         todos: todos,
       };
-      const tempBoards = this.context.boards.map((board: IBoard) => {
-         if (board.id === newHome.id) {
-          return newHome;
-        }
-        return board;
-      });
-      this.context.setBoards(tempBoards);
+      // const tempBoards = this.context.boards.map((board: IBoard) => {
+      //   if (board.id === newHome.id) {
+      //     return newHome;
+      //   }
+      //   return board;
+      // });
+      //this.context.setBoards(tempBoards);
       this.context.editBoard(newHome);
       return;
     }
@@ -90,7 +90,7 @@ class BoardsDashboard extends React.Component {
   };
 
   public render() {
-    if (this.context.loadingInitial)
+    if (this.context.loadingInitial || this.context.submitting)
       return <LoadingComponent content="Loading todos" />;
     return (
       <DragDropContext onDragEnd={this.onDragEnd}>

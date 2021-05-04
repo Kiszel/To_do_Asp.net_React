@@ -7,7 +7,7 @@ using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace Business_Logic_Layer.Handlers
+namespace Business_Logic_Layer.Handlers.BoardHandler
 {
     public class DeleteBoardHandler : IRequestHandler<DeleteBoardCommand>
     {

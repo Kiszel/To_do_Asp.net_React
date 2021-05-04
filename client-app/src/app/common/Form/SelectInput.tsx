@@ -2,7 +2,6 @@ import React from "react";
 import { FieldRenderProps } from "react-final-form";
 import { FormFieldProps } from "semantic-ui-react/dist/commonjs/collections/Form/FormField";
 import { Form, Label, Select } from "semantic-ui-react";
-import { Priority } from "../../models/Priorty";
 
 interface ITextInput
   extends FieldRenderProps<number, HTMLElement>,
