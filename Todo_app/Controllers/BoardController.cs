@@ -6,7 +6,6 @@ using MediatR;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using Business_Logic_Layer.Commands;
-using Business_Logic_Layer.Services;
 
 namespace Todo_app.Controllers
 {

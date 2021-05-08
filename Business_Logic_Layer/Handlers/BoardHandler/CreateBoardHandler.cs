@@ -18,7 +18,6 @@ namespace Business_Logic_Layer.Handlers.BoardHandler
     {
         var board = new Board
         {
-            Id=0,
             Title = request.Title,
         };
             await _boardRepository.AddEntityAsync(board);

@@ -10,8 +10,8 @@ namespace Data_Access_Layer.Repositories
 {
     public class BoardRepository : BaseRepository<Board>, IBoardRepository
     {
-        private readonly DataContext _dataContext;
-        public BoardRepository(DataContext dataContext)
+        private readonly IDataContext _dataContext;
+        public BoardRepository(IDataContext dataContext)
             :base(dataContext)
         {
             _dataContext = dataContext;

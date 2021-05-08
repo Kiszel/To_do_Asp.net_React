@@ -39,6 +39,10 @@ namespace Todo_app
             services.AddScoped<ITodoRepository, TodoRepository>();
             services.AddScoped<IBoardRepository, BoardRepository>();
 
+            services.AddScoped<IDataContext>(provider => provider.GetService<IDataContext>());
+            services.AddScoped<IDataContext, DataContext>();
+
+
             services.AddMediatR(typeof(GetAllTodosHandler).Assembly);
 
             services.AddControllers();

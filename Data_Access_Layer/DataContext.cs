@@ -4,7 +4,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace Data_Access_Layer
 {
-    public class DataContext : DbContext
+    public class DataContext : DbContext , IDataContext
     {
         public DataContext(DbContextOptions options) : base(options)
         {

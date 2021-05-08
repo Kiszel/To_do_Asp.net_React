@@ -7,7 +7,7 @@ namespace Data_Access_Layer
 {
     public class Seed
     {
-        public static void SeedData(DataContext context)
+        public static void SeedData(IDataContext context)
         {
             var todos = new List<Todo>();
             if (!context.Todos.Any())

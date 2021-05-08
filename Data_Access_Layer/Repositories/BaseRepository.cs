@@ -10,8 +10,8 @@ namespace Data_Access_Layer.Repositories
 {
     public abstract class BaseRepository<TEntity> : IBaseRepository<TEntity> where TEntity : class
     {
-        private readonly DataContext _dataContext;
-        public BaseRepository(DataContext dataContext)
+        private readonly IDataContext _dataContext;
+        public BaseRepository(IDataContext dataContext)
         {
             _dataContext = dataContext;
         }
