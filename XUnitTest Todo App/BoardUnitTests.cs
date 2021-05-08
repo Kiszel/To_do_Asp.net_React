@@ -1,4 +1,4 @@
-using Business_Logic_Layer.Handlers.BoardHandler;
+﻿using Business_Logic_Layer.Handlers.BoardHandler;
 using Business_Logic_Layer.Queries;
 using Data_Access_Layer.Entities;
 using Data_Access_Layer.Repositories;
@@ -41,7 +41,7 @@ namespace XUnitTest_Todo_App
 
             query.Id = 0;
             var handler = new GetBoardHandler(mockBoardRepository.Object);
-            var handle = await handler.Handle(query,new System.Threading.CancellationToken());
+            var handle = await handler.Handle(query, new System.Threading.CancellationToken());
 
             Assert.Equal(handle, b);
 
