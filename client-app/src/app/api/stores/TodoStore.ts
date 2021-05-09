@@ -79,12 +79,10 @@ class TodoStore {
       await Todos.delete(id);
       runInAction(() => {
         this.submitting = false;
-        this.target = "";
       });
     } catch (error) {
       runInAction(() => {
         this.submitting = false;
-        this.target = "";
       });
       console.log(error);
     }
